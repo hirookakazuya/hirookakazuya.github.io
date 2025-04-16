@@ -1,35 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Homepage</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <title>Database App Sample</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <nav class="navbar">
-      <div class="logo">MySite</div>
-      <ul class="nav-links">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Services</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
 
-  <main class="hero">
-    <h1>Welcome to My Website</h1>
-    <p>Your one-stop solution for modern web design.</p>
-    <p>describe my idea and share with myself. </p>
-    <p>i can edit from mobile</p>
-    <button onclick="handleClick()">Get Started</button>
-  </main>
+  <div class="toolbar">
+    <input type="text" id="filterName" placeholder="Filter by name">
+    <button id="btnSearch">Search</button>
+    <button id="btnAdd">Add New Entry</button>
+  </div>
 
-  <footer>
-    <p>© 2025 MySite. All rights reserved.</p>
-  </footer>
+  <table id="dataTable">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Date</th>
+        <th>Category</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody id="tableBody">
+      <!-- Rows will be added here -->
+    </tbody>
+  </table>
 
   <script src="script.js"></script>
 </body>
