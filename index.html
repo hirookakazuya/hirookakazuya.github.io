@@ -31,22 +31,46 @@
 database-app/
 ├── public/
 │   ├── index.html
-│   └── favicon.ico
+│   ├── favicon.ico
+│   └── robots.txt
 ├── src/
 │   ├── assets/
 │   │   ├── images/
+│   │   │   └── logo.png
 │   │   └── fonts/
+│   │       └── custom-font.woff2
 │   ├── components/
+│   │   ├── DataTable.js
+│   │   ├── DataTable.css
+│   │   └── Header.js
 │   ├── styles/
+│   │   ├── main.css
+│   │   └── variables.css
 │   ├── scripts/
+│   │   ├── main.js
 │   │   ├── modules/
+│   │   │   └── dataFetcher.js
 │   │   ├── utilities/
+│   │   │   └── dateFormatter.js
 │   │   └── services/
+│   │       └── apiService.js
 │   ├── data/
+│   │   ├── mock/
+│   │   │   └── users.json
+│   │   └── schemas/
+│   │       └── userSchema.js
 │   └── tests/
+│       ├── components/
+│       │   └── DataTable.test.js
+│       └── scripts/
+│           └── dataFetcher.test.js
 ├── docs/
+│   ├── README.md
+│   ├── architecture.md
+│   └── style-guide.md
 ├── .gitignore
 └── package.json
+
   </pre>
 
   <script src="script.js"></script>
