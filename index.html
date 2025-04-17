@@ -72,65 +72,77 @@ database-app/
 └── package.json
   </pre>
   <pre>
+    
 各ディレクトリ・ファイルの詳細
+
 public/
 	•	index.html
-アプリのエントリーポイントとなるHTMLファイル。`&lt;script src="/src/scripts/main.js"&gt;` などでJavaScriptを読み込む。
+　　　アプリのエントリーポイントとなるHTMLファイル。`&lt;script src="/src/scripts/main.js"&gt;` などでJavaScriptを読み込む。
 	•	favicon.ico
-ブラウザのタブに表示されるアイコン。
+     ブラウザのタブに表示されるアイコン。
 	•	robots.txt
-検索エンジン向けのクロール制御ファイル。
+     検索エンジン向けのクロール制御ファイル。
 	•	（ここに置いたファイルは、ビルドや変換なしでそのままWebサーバーから配信されます）
+  
 src/
-アプリの「開発用ソースコード」やリソースをまとめる場所。
-assets/
+   アプリの「開発用ソースコード」やリソースをまとめる場所。
+  
+ assets/
 	•	images/
-ロゴ・アイコン・バナーなどの画像ファイル。
+     ロゴ・アイコン・バナーなどの画像ファイル。
 	•	fonts/
-Webフォントファイル（woff, ttf など）。
-components/
+     Webフォントファイル（woff, ttf など）。
+    
+ components/
 	•	DataTable.js, DataTable.css, Header.js
-UI部品ごとのJavaScript・CSS。再利用できる形で分割。
-styles/
+     UI部品ごとのJavaScript・CSS。再利用できる形で分割。
+
+ styles/
 	•	main.css
-全体のスタイル（レイアウト・色・フォントなど）。
+     全体のスタイル（レイアウト・色・フォントなど）。
 	•	variables.css
-CSSカスタムプロパティやテーマ用変数。
-scripts/
+     CSSカスタムプロパティやテーマ用変数。
+    
+ scripts/
 	•	main.js
-アプリのエントリーポイントとなるJavaScript。
+     アプリのエントリーポイントとなるJavaScript。
 	•	modules/
-特定の機能（例：データ取得、描画処理など）をまとめたモジュール。
+     特定の機能（例：データ取得、描画処理など）をまとめたモジュール。
 	•	utilities/
-日付変換やバリデーションなど、様々な場所で使う小さな便利関数。
+     日付変換やバリデーションなど、様々な場所で使う小さな便利関数。
 	•	services/
-API通信や認証など、外部サービスとやり取りする処理。
-data/
+     API通信や認証など、外部サービスとやり取りする処理。
+    
+ data/
 	•	mock/
-テストや開発用のダミーデータ（例：users.json）。
+     テストや開発用のダミーデータ（例：users.json）。
 	•	schemas/
-データ構造の定義やバリデーションスキーマ。
-tests/
+     データ構造の定義やバリデーションスキーマ。
+    
+ tests/
 	•	components/
-各コンポーネントの単体テスト。
+     各コンポーネントの単体テスト。
 	•	scripts/
-モジュールやユーティリティのテスト。
+     モジュールやユーティリティのテスト。
+    
 docs/
 	•	README.md
-プロジェクトの概要・セットアップ手順など。
+     プロジェクトの概要・セットアップ手順など。
 	•	architecture.md
-システム構成や設計方針の説明。
+     システム構成や設計方針の説明。
 	•	style-guide.md
-コーディング規約やデザインルール。
+     コーディング規約やデザインルール。
+    
 .gitignore
 	•	Gitで管理しないファイル（node_modulesや一時ファイルなど）を指定。
+  
 package.json
 	•	プロジェクトの依存パッケージやスクリプト、メタ情報を管理。
-補足：publicとsrcの違い
+     補足：publicとsrcの違い
 	•	public/
-そのままブラウザに配信する静的ファイル置き場（HTML、画像、アイコンなど）。
+     そのままブラウザに配信する静的ファイル置き場（HTML、画像、アイコンなど）。
 	•	src/
-開発中の元コードや部品。ビルドツールでまとめたり変換したりして、最終的にpublicやdistに出力する。
+     開発中の元コードや部品。ビルドツールでまとめたり変換したりして、最終的にpublicやdistに出力する。
 　</pre>
 
   <script src="script.js"></script>
