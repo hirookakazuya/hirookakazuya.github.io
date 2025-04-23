@@ -126,6 +126,7 @@ input[type="text"] {
   border: 1px solid #000;
   border-radius: 2px;
   padding: 0 4px;
+  border:0px;
 
 }
   </style>
