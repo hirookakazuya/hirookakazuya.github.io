@@ -1,3 +1,138 @@
+
+<head>
+  <style>
+
+/* フィールドRow本体 */
+.fields {
+  width: 300px;
+  display: flex;
+  outline: 1px solid #000;
+  outline-offset: -1px;
+  background: #f7f7f7;
+  font-family: Arial, sans-serif;
+  margin-bottom: 0;
+  border-bottom: none;
+}
+.field-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  border-right: 1px solid #000;
+  border-bottom: 1px solid #000;
+  box-sizing: border-box;
+  min-height: 32px;
+  padding: 0;
+}
+.field-cell:last-child {
+  border-right: none;
+}
+.field-cell.one   { width: 30px; }
+.field-cell.two   { width: 30px; }
+.field-cell.three { width: 120px; }
+.field-cell.four  { width: 120px; }
+
+
+.table {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  outline: 1px solid #000;
+  outline-offset: -1px;
+  overflow: hidden;
+  background: #fff;
+  font-family: Arial, sans-serif;
+}
+
+.row {
+  display: flex;
+}
+
+.cell {
+  outline: 1px solid #000;
+  outline-offset: 0px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 0;
+  margin: 0;
+}
+
+.one { width: 30px; }
+.two { width: 30px; }
+.three { width: 120px; }
+.four { width: 120px; }
+
+/* one, twoは高さ200px（40px×5） */
+.one .cell-inner,
+.two .cell-inner {
+  height: 200px;
+  min-height: 200px;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+}
+
+/* three, fourは各セル40pxの高さ */
+.three .cell-inner,
+.four .cell-inner {
+  height: 40px;
+  min-height: 40px;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: center;
+  border-bottom: 1px solid #000;
+  padding: 0;
+  margin: 0;
+}
+.three .cell-inner:last-child,
+.four .cell-inner:last-child {
+  border-bottom: none;
+}
+
+/* 左右分割・間に枠線 */
+.cell-inner-left {
+  flex: 1 1 0;
+  text-align: right;
+  padding-right: 4px;
+  border-right: 1px solid #000;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
+  box-sizing: border-box;
+}
+.cell-inner-right {
+  flex: 2 1 0;
+  text-align: left;
+  padding-left: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+input[type="text"] {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  font-size: 12px;
+  border: 1px solid #000;
+  border-radius: 2px;
+  padding: 0 4px;
+
+}
+  </style>
+
+</head>
+
+<body>
 <div class="fields">
   <div class="field-cell one">A</div>
   <div class="field-cell two">B</div>
@@ -110,3 +245,5 @@
   </div>
   <!-- 2行目も同様に -->
 </div>
+</body>
+
