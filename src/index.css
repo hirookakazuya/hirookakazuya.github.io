@@ -24,7 +24,7 @@
 .field-cell:last-child {
   border-right: none;
 }
-.field-cell.one   { width: 120px; }
+.field-cell.one   { width: 30px; }
 .field-cell.two   { width: 30px; }
 .field-cell.three { width: 120px; }
 .field-cell.four  { width: 120px; }
