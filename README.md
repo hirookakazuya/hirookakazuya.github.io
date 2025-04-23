@@ -1,69 +1,112 @@
-<h1 align="center">
-  <a href="https://safdarjamal.github.io/crud-app/">
-    CRUD App
-  </a>
-</h1>
+<div class="fields">
+  <div class="field-cell one">A</div>
+  <div class="field-cell two">B</div>
+  <div class="field-cell three">C</div>
+  <div class="field-cell four">D</div>
+</div>
 
-<p align="center">
-  <a href="https://github.com/SafdarJamal/crud-app/actions?query=workflow%3A%22Node.js+CI%22">
-    <img src="https://github.com/SafdarJamal/crud-app/workflows/Node.js%20CI/badge.svg" alt="Node.js CI" />
-  </a>
-  <a href="https://github.com/SafdarJamal/crud-app/releases">
-    <img src="https://img.shields.io/github/v/release/SafdarJamal/crud-app" alt="GitHub Release (latest by date)" />
-  </a>
-  <a href="https://github.com/SafdarJamal/crud-app/blob/master/LICENSE">
-    <img src="https://img.shields.io/github/license/SafdarJamal/crud-app" alt="License" />
-  </a>
-</p>
-
-<p align="center">
-  A simple and beautiful <a href="https://www.codecademy.com/articles/what-is-crud">CRUD</a> application built with <a href="https://reactjs.org">React</a>.
-</p>
-
-![crud-app](https://user-images.githubusercontent.com/48409548/94567114-8aa5ea80-0284-11eb-99f6-87401b099848.png)
-
-## Technologies Used
-
-- [React](http://reactjs.org)
-- [Primitive UI](https://taniarascia.github.io/primitive)
-- [SweetAlert2](https://sweetalert2.github.io)
-
-## Development
-
-To get a local copy of the code, clone it using git:
-
-```
-git clone https://github.com/SafdarJamal/crud-app.git
-cd crud-app
-```
-
-Install dependencies:
-
-```
-npm install
-```
-
-Now, you can start a local web server by running:
-
-```
-npm start
-```
-
-and then you can open http://localhost:3000 to view it in the browser.
-
-#### Available Scripts
-
-| Script        | Description                                                             |
-| ------------- | ----------------------------------------------------------------------- |
-| npm start     | Runs the app in the development mode.                                   |
-| npm test      | Launches the test runner in the interactive watch mode.                 |
-| npm run build | Builds the app for production to the `build` folder.                    |
-| npm run eject | This command will remove the single build dependency from your project. |
-
-## Credits
-
-CRUD App is built and maintained by [Safdar Jamal](https://safdarjamal.github.io).
-
-## License
-
-CRUD App is open-source software licensed under the [MIT License](https://github.com/SafdarJamal/crud-app/blob/master/LICENSE).
+<div class="table">
+  <div class="row">
+    <div class="cell one">
+      <div class="cell-inner">
+        <div class="cell-inner-left">
+          <label for="a1">A1</label>
+        </div>
+      </div>
+    </div>
+    <div class="cell two">
+      <div class="cell-inner">
+        <div class="cell-inner-right">
+          <input id="b1" type="text">
+        </div>
+      </div>
+    </div>
+    <div class="cell three">
+      <div class="cell-inner">
+        <div class="cell-inner-left">
+          <label for="c1-1">C1-1</label>
+        </div>
+        <div class="cell-inner-right">
+          <input id="c1-1" type="text">
+        </div>
+      </div>
+      <!-- 以下、cell-innerを5つ繰り返し -->
+      <div class="cell-inner">
+        <div class="cell-inner-left">
+          <label for="c1-2">C1-2</label>
+        </div>
+        <div class="cell-inner-right">
+          <input id="c1-2" type="text">
+        </div>
+      </div>
+      <div class="cell-inner">
+        <div class="cell-inner-left">
+          <label for="c1-3">C1-3</label>
+        </div>
+        <div class="cell-inner-right">
+          <input id="c1-3" type="text">
+        </div>
+      </div>
+      <div class="cell-inner">
+        <div class="cell-inner-left">
+          <label for="c1-4">C1-4</label>
+        </div>
+        <div class="cell-inner-right">
+          <input id="c1-4" type="text">
+        </div>
+      </div>
+      <div class="cell-inner">
+        <div class="cell-inner-left">
+          <label for="c1-5">C1-5</label>
+        </div>
+        <div class="cell-inner-right">
+          <input id="c1-5" type="text">
+        </div>
+      </div>
+    </div>
+    <div class="cell four">
+      <!-- fourも同様に5つ -->
+      <div class="cell-inner">
+        <div class="cell-inner-left">
+          <label for="d1-1">D1-1</label>
+        </div>
+        <div class="cell-inner-right">
+          <input id="d1-1" type="text">
+        </div>
+      </div>
+      <div class="cell-inner">
+        <div class="cell-inner-left">
+          <label for="d1-2">D1-2</label>
+        </div>
+        <div class="cell-inner-right">
+          <input id="d1-2" type="text">
+        </div>
+      </div>
+      <div class="cell-inner">
+        <div class="cell-inner-left">
+          <label for="d1-3">D1-3</label>
+        </div>
+        <div class="cell-inner-right">
+          <input id="d1-3" type="text">
+        </div>
+      </div>
+      <div class="cell-inner">
+        <div class="cell-inner-left">
+          <label for="d1-4">D1-4</label>
+        </div>
+        <div class="cell-inner-right">
+          <input id="d1-4" type="text">
+        </div>
+      </div>
+      <div class="cell-inner">
+        <div class="cell-inner-left">
+          <label for="d1-5">D1-5</label>
+        </div>
+        <div class="cell-inner-right">
+          <input id="d1-5" type="text">
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 2行目も同様に -->
+</div>
