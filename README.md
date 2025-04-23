@@ -34,7 +34,7 @@
 
 
 .table {
-  width: 400px;
+  width: 300px;
   display: flex;
   flex-direction: column;
   outline: 1px solid #000;
