@@ -26,9 +26,9 @@
   padding: 0;                           /* パディング（内側余白）を0に設定 */
 }
 
-/＊.field-cell:last-child {
+.field-cell:last-child {
   border-right: none;                    
-}＊/
+}
                                          /* 最後の.field-cellの右側ボーダーを消す */
 
 .table {
