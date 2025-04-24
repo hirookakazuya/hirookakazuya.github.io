@@ -27,12 +27,6 @@
 .field-cell:last-child {
   border-right: none;
 }
-.field-cell.one   { width: 30px; }
-.field-cell.two   { width: 30px; }
-.field-cell.three { width: 120px; }
-.field-cell.four  { width: 120px; }
-.field-cell.five  { width: 120px; }
-
 
 .table {
   width: 420px;
@@ -60,8 +54,8 @@
   margin: 0;
 }
 
-.one { width: 30px; }
-.two { width: 30px; }
+.one { width: 50px; }
+.two { width: 50px; }
 .three { width: 120px; }
 .four { width: 120px; }
 .five { width: 120px; }
