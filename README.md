@@ -143,7 +143,7 @@ input[type="text"] {
   <div class="field-cell two">B</div>
   <div class="field-cell three">C</div>
   <div class="field-cell four">D</div>
-  <div class="field-cell four">E</div>
+  <div class="field-cell five">E</div>
 </div>
 
 <div class="table">
