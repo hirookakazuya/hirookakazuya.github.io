@@ -139,6 +139,7 @@ input[type="text"] {
   <div class="field-cell two">B</div>
   <div class="field-cell three">C</div>
   <div class="field-cell four">D</div>
+  <div class="field-cell four">E</div>
 </div>
 
 <div class="table">
@@ -240,6 +241,49 @@ input[type="text"] {
         </div>
         <div class="cell-inner-right">
           <input id="d1-5" type="text">
+        </div>
+      </div>
+    </div>
+    <div class="cell five">
+      <!-- fiveも同様に5つ -->
+      <div class="cell-inner">
+        <div class="cell-inner-left">
+          <label for="e1-1">E1-1</label>
+        </div>
+        <div class="cell-inner-right">
+          <input id="e1-1" type="text">
+        </div>
+      </div>
+      <div class="cell-inner">
+        <div class="cell-inner-left">
+          <label for="e1-2">E1-2</label>
+        </div>
+        <div class="cell-inner-right">
+          <input id="e1-2" type="text">
+        </div>
+      </div>
+      <div class="cell-inner">
+        <div class="cell-inner-left">
+          <label for="e1-3">E1-3</label>
+        </div>
+        <div class="cell-inner-right">
+          <input id="e1-3" type="text">
+        </div>
+      </div>
+      <div class="cell-inner">
+        <div class="cell-inner-left">
+          <label for="e1-4">E1-4</label>
+        </div>
+        <div class="cell-inner-right">
+          <input id="e1-4" type="text">
+        </div>
+      </div>
+      <div class="cell-inner">
+        <div class="cell-inner-left">
+          <label for="e1-5">E1-5</label>
+        </div>
+        <div class="cell-inner-right">
+          <input id="e1-5" type="text">
         </div>
       </div>
     </div>
