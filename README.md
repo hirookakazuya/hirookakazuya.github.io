@@ -82,7 +82,7 @@
 /* three, fourは各セル40pxの高さ */
 .three .cell-inner,
 .four .cell-inner,
-.five .cell-inner, {
+.five .cell-inner {
   height: 40px;
   min-height: 40px;
   display: flex;
