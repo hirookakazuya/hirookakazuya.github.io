@@ -31,6 +31,7 @@
 .field-cell.two   { width: 30px; }
 .field-cell.three { width: 120px; }
 .field-cell.four  { width: 120px; }
+.field-cell.five  { width: 120px; }
 
 
 .table {
@@ -63,6 +64,7 @@
 .two { width: 30px; }
 .three { width: 120px; }
 .four { width: 120px; }
+.five { width: 120px; }
 
 /* one, twoは高さ200px（40px×5） */
 .one .cell-inner,
@@ -79,7 +81,8 @@
 
 /* three, fourは各セル40pxの高さ */
 .three .cell-inner,
-.four .cell-inner {
+.four .cell-inner,
+.five .cell-inner, {
   height: 40px;
   min-height: 40px;
   display: flex;
@@ -91,7 +94,8 @@
   margin: 0;
 }
 .three .cell-inner:last-child,
-.four .cell-inner:last-child {
+.four .cell-inner:last-child,
+.three .cell-inner:last-child {
   border-bottom: none;
 }
 
