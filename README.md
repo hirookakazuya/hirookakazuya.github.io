@@ -11,7 +11,7 @@
   background: #f7f7f7;                /* 背景色を薄いグレーに設定 */
   font-family: Arial, sans-serif;     /* フォントをArial、なければsans-serifに設定 */
   margin-bottom: 0;                   /* 下のマージンを0に設定 */
-  border-bottom: none;                /* 下側のボーダーを消去 */
+
 }
 
 .field-cell {
