@@ -15,19 +15,21 @@
 }
 
 .field-cell {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  border-right: 1px solid #000;
-  border-bottom: 1px solid #000;
-  box-sizing: border-box;
-  min-height: 32px;
-  padding: 0;
+  display: flex;                        /* Flexboxレイアウトを適用 */
+  align-items: center;                  /* アイテムを縦方向中央揃えにする */
+  justify-content: center;              /* アイテムを水平方向中央揃えにする */
+  font-weight: bold;                    /* 文字を太字にする */
+  border-right: 1px solid #000;         /* 右側に1ピクセルの黒い実線ボーダーを設定 */
+  border-bottom: 1px solid #000;        /* 下側に1ピクセルの黒い実線ボーダーを設定 */
+  box-sizing: border-box;               /* パディングとボーダーを幅と高さに含める */
+  min-height: 32px;                     /* 最小の高さを32ピクセルに設定 */
+  padding: 0;                           /* パディング（内側余白）を0に設定 */
 }
-.field-cell:last-child {
-  border-right: none;
-}
+
+/＊.field-cell:last-child {
+  border-right: none;                    
+}＊/
+                                         /* 最後の.field-cellの右側ボーダーを消す */
 
 .table {
   width: 420px;
