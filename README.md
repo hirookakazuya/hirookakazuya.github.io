@@ -4,7 +4,7 @@
 
 /* フィールドRow本体 */
 .fields {
-  width: 300px;
+  width: 420px;
   display: flex;
   outline: 1px solid #000;
   outline-offset: -1px;
