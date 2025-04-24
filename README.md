@@ -95,7 +95,7 @@
 }
 .three .cell-inner:last-child,
 .four .cell-inner:last-child,
-.three .cell-inner:last-child {
+.five .cell-inner:last-child {
   border-bottom: none;
 }
 
