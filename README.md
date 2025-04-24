@@ -4,15 +4,16 @@
 
 /* フィールドRow本体 */
 .fields {
-  width: 420px;
-  display: flex;
-  outline: 1px solid #000;
-  outline-offset: -1px;
-  background: #f7f7f7;
-  font-family: Arial, sans-serif;
-  margin-bottom: 0;
-  border-bottom: none;
+  width: 420px;                       /* 要素の幅を420ピクセルに設定 */
+  display: flex;                      /* Flexboxレイアウトを適用 */
+  outline: 1px solid #000;            /* 黒色の1ピクセル実線アウトラインを設定 */
+  outline-offset: -1px;               /* アウトラインを1ピクセル内側にずらす */
+  background: #f7f7f7;                /* 背景色を薄いグレーに設定 */
+  font-family: Arial, sans-serif;     /* フォントをArial、なければsans-serifに設定 */
+  margin-bottom: 0;                   /* 下のマージンを0に設定 */
+  border-bottom: none;                /* 下側のボーダーを消去 */
 }
+
 .field-cell {
   display: flex;
   align-items: center;
