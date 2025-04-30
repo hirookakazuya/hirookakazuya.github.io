@@ -155,7 +155,7 @@ input[type="text"] {
     <div class="cell one">
       <div class="cell-inner">
         <div class="cell-inner-left">
-          <label for="a1">A1</label>
+          <label for="a1">A1r</label>
         </div>
       </div>
     </div>
