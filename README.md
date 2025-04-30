@@ -148,7 +148,7 @@ input[type="text"] {
 </div>
 
 <script>
-    function createRow(){
+    function createRow(data){
       const row = document.createElement("div");
       row.className = "row";
       row.innerHTML = `
