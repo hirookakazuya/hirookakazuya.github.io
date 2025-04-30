@@ -172,7 +172,7 @@ input[type="text"] {
           <label for="c1-1">C1-1</label>
         </div>
         <div class="cell-inner-right">
-          <input id="c1-1" type="text">
+          <input id="c1-1" type="text" value={data.season}>
         </div>
       </div>
       <!-- 以下、cell-innerを5つ繰り返し -->
@@ -298,11 +298,18 @@ input[type="text"] {
     `;
       return row;
     }
-
+const sampleData = [
+  { season: "Spring" },
+  { season: "Summer" },
+  { season: "Autumn" },
+  { season: "Winter" }
+];
 　　const table = document.getElementById("table");
-   const row = createRow();
+sampleData.forEach((data)=>{
+
+   const row = createRow(data);
    table.appendChild(row);
-  
+});
 </script>
 </body>
 
