@@ -172,7 +172,7 @@ input[type="text"] {
           <label for="c1-1">C1-1</label>
         </div>
         <div class="cell-inner-right">
-          <input id="c1-1" type="text" value={data.season}>
+          <input id="c1-1" type="text" value="{data.season}">
         </div>
       </div>
       <!-- 以下、cell-innerを5つ繰り返し -->
