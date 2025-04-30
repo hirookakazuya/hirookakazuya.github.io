@@ -300,7 +300,7 @@ input[type="text"] {
     }
 
 　　const table = document.getElementById("table");
-   const row = createElement();
+   const row = createRow();
    table.appendChild(row);
   
 </script>
