@@ -143,7 +143,7 @@ input[type="text"] {
   <div class="field-cell five">E</div>
 </div>
 
-<div id="table"class="table">
+<div id="table" class="table">
   
 </div>
 
