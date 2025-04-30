@@ -143,8 +143,15 @@ input[type="text"] {
   <div class="field-cell five">E</div>
 </div>
 
-<div class="table">
-  <div class="row">
+<div id="table"class="table">
+  
+</div>
+
+<script>
+    function createRow()={
+      const row = document.createElement("div");
+      row.className = "row";
+      row.innerHTML = `
     <div class="cell one">
       <div class="cell-inner">
         <div class="cell-inner-left">
@@ -288,8 +295,14 @@ input[type="text"] {
         </div>
       </div>
     </div>
-  </div>
-  <!-- 2行目も同様に -->
-</div>
+    `;
+      return row;
+    }
+
+　　const table = document.getElementById("table");
+   const row = createElement();
+   table.appendChild(row);
+  
+</script>
 </body>
 
