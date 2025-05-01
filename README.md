@@ -181,7 +181,7 @@ input[type="text"] {
           <label for="c1-2">C1-2</label>
         </div>
         <div class="cell-inner-right">
-          <input id="c1-2" type="text">
+          <input id="c1-2" type="text" value=${data.season}>
         </div>
       </div>
       <div class="cell-inner">
@@ -299,10 +299,10 @@ input[type="text"] {
       return row;
     }
 const sampleData = [
-  { season: "Spring" },
-  { season: "Summer" },
-  { season: "Autumn" },
-  { season: "Winter" }
+  { season: "Spring",buyer:"ken" },
+  { season: "Summer",buyer:"mike" },
+  { season: "Autumn",buyer:"jimmy" },
+  { season: "Winter",buyer:"sum" }
 ];
 　　const table = document.getElementById("table");
 sampleData.forEach((data)=>{
