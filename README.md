@@ -181,7 +181,7 @@ input[type="text"] {
           <label for="c1-2">C1-2</label>
         </div>
         <div class="cell-inner-right">
-          <input id="c1-2" type="text" value=${data.season}>
+          <input id="c1-2" type="text" value=${data.buyer}>
         </div>
       </div>
       <div class="cell-inner">
