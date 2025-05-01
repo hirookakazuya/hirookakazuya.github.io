@@ -301,8 +301,7 @@ input[type="text"] {
 const sampleData = [
   { season: "Spring",buyer:"ken" },
   { season: "Summer",buyer:"mike" },
-  { season: "Autumn",buyer:"jimmy" },
-  { season: "Winter",buyer:"sum" }
+  { season: "Autumn",buyer:"jimmy" }
 ];
 　　const table = document.getElementById("table");
 sampleData.forEach((data)=>{
