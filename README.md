@@ -64,32 +64,37 @@
 
     .row {
       display: flex;
+      /* flexboxを設定 */
     }
 
-    .cell {
-  outline: 1px solid #000;
-  outline-offset: 0px;
-  background: #fff;
-  display: flex;
-  flex-direction: column;
-  justify-content: stretch; /* important */
-  padding: 0;
-  margin: 0;
-  height: 200px; /* fixed height */
+.cell {
+  outline: 1px solid #000;         
+　/* セル全体に1pxの黒い実線の枠線を表示 */
+  outline-offset: 0px;             
+  /* 枠線の位置をセルの端にぴったり合わせる（ずらさない） */
+  background: #fff;                
+  /* セルの背景色を白に設定 */
+  display: flex;                   
+  /* セル内のレイアウトをflexboxで制御できるようにする */
+  flex-direction: column;          
+  /* セル内の子要素を縦方向（上下）に並べる */
+  justify-content: stretch;        
+  /* 子要素を上下方向に隙間なく引き伸ばして配置する（重要） */
+  padding: 0;                      
+  /* セル内側の余白をなくす */
+  margin: 0;                       
+  /* セル外側の余白をなくす */
+  height: 200px;                   
+  /* セルの高さを200pxに固定する */
 }
 
-/* Set specific widths */
-.group_A {
-  width: 50px;
-}
-.group_B {
-  width: 50px;
-}
-.group_C,
-.group_D,
-.group_E {
-  width: 120px;
-}
+
+/* カラム幅調整 */
+.group_A {width: 50px;}
+.group_B {width: 50px;}
+.group_C {width: 120px;}
+.group_D {width: 120px;}
+.group_E {width: 120px;}
 
 /* All inner cells: share equal height within parent cell */
 .cell-inner {
