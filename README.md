@@ -145,28 +145,46 @@
 }
 
 
-    .cell-inner-right {
-      flex: 2 1 0;
-      text-align: left;
-      padding-left: 0px;
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      height: 100%;
-      box-sizing: border-box;
-    }
+.cell-inner-right {
+  flex: 2 1 0;
+  /* 親のflexコンテナ内で、2の比率で成長・1の比率で縮小し、
+  初期サイズは0とする */
+  text-align: left;
+  /* テキストやインライン要素を左寄せにする */
+  padding-left: 0px;
+  /* 左側の内側余白を0にする */
+  display: flex;
+  /* この要素自体をflexコンテナにする */
+  align-items: center;
+  /* 子要素を垂直方向の中央に揃える */
+  justify-content: flex-start;
+  /* 子要素を水平方向の左端に揃える */
+  height: 100%;
+  /* 親要素の高さに合わせる */
+  box-sizing: border-box;
+  /* paddingやborderを含めて要素のサイズを計算する */
+}
+
 
     input[type="text"] {
-      width: 100%;
-      height: 100%;
-      box-sizing: border-box;
-      font-size: 12px;
-      border: 1px solid #000;
-      border-radius: 2px;
-      padding: 0 4px;
-      border: 0px;
+  width: 100%;
+  /* 親要素の幅いっぱいに広げる */
+  height: 100%;
+  /* 親要素の高さいっぱいに広げる */
+  box-sizing: border-box;
+  /* paddingやborderを含めて要素のサイズを計算する */
+  font-size: 12px;
+  /* 文字サイズを12pxに設定する */
+  border: 1px solid #000;
+  /* 1pxの黒い実線の枠線を付ける */
+  border-radius: 2px;
+  /* 角を2pxだけ丸くする */
+  padding: 0 4px;
+  /* 上下の内側余白を0、左右を4pxにする */
+  border: 0px;
+  /* 枠線を消す（上のborder指定が上書きされる）*/
+}
 
-    }
   </style>
 
 </head>
