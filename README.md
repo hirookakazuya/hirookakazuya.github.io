@@ -43,19 +43,24 @@
 
     /* 最後の.field-cellの右側ボーダーを消す。項目と項目の間の縦線 */
 
-    .table {
-      /*width: 420px;*/
-      /* テーブルの幅指定(group_{}のクラスが効くはずだが、現在不可) */
+.table {
+
       display: inline-flex;
-      /*親の幅を子の合計にする*/
+      /* 親要素をインライン要素として表示しつつ、flexboxの機能を利用できるようにする */
       flex-direction: column;
-      /*tableの子要素のrowは上下に配置*/
+      /* 子要素（通常は行やrow）を縦方向（上下）に並べる */
       outline: 1px solid #000;
+      /* テーブル全体に黒色の1px実線の枠線を描画する */
       outline-offset: -1px;
+      /* 枠線を内側に1pxずらすことで、外側にはみ出さないようにする */
       overflow: hidden;
+      /* 子要素がはみ出した場合に隠れるようにする（スクロールバーなどは表示しない） */
       background: #fff;
+      /* 背景色を白に設定する */
       font-family: Arial, sans-serif;
-    }
+      /* テーブル内のテキストのフォントをArial、なければサンセリフ体にする */
+}
+
 
     .row {
       display: flex;
