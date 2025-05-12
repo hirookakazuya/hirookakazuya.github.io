@@ -41,14 +41,12 @@
       /* 最後のセルの右枠線はfield全体のoutlineがあるので削除 */
     }
 
-    /* 最後の.field-cellの右側ボーダーを消す。項目と項目の間の縦線 */
-
 .table {
 
       display: inline-flex;
       /* 親要素をインライン要素として表示しつつ、flexboxの機能を利用できるようにする */
       flex-direction: column;
-      /* 子要素（通常は行やrow）を縦方向（上下）に並べる */
+      /* 子要素（row）を縦方向（上下）に並べる */
       outline: 1px solid #000;
       /* テーブル全体に黒色の1px実線の枠線を描画する */
       outline-offset: -1px;
@@ -69,7 +67,8 @@
 
 .cell {
   outline: 1px solid #000;         
-　/* セル全体に1pxの黒い実線の枠線を表示 */
+　/* セル全体に1pxの黒い実線の枠線を表示
+　どうやって左右の線を重ならないようにしている？ */
   outline-offset: 0px;             
   /* 枠線の位置をセルの端にぴったり合わせる（ずらさない） */
   background: #fff;                
@@ -89,42 +88,62 @@
 }
 
 
-/* カラム幅調整 */
+/* フィールドとセルのカラム幅調整 */
 .group_A {width: 50px;}
 .group_B {width: 50px;}
 .group_C {width: 120px;}
 .group_D {width: 120px;}
 .group_E {width: 120px;}
 
-/* All inner cells: share equal height within parent cell */
 .cell-inner {
-  flex: 1; /* ensures equal height distribution */
+  flex: 1;
+  /* この要素が親のflexコンテナ内で均等に
+  スペースを分け合うようにする */
   display: flex;
+  /* この要素自体をflexコンテナにする */
   flex-direction: row;
+  /* 子要素を水平方向（横並び）に配置する
+  ラベルと入力欄 */
   align-items: stretch;
+  /* 子要素の高さを親要素の高さに合わせて引き伸ばす */
   justify-content: center;
+  /* 子要素を水平方向の中央に配置する */
   border-bottom: 1px solid #000;
+  /* 下側に1pxの黒い実線の境界線を引く */
   padding: 0;
+  /* 内側の余白をなくす */
   margin: 0;
+  /* 外側の余白をなくす */
 }
 
-/* Optional: remove border from last inner-cell in a group */
 .cell-inner:last-child {
   border-bottom: none;
+  /* 最後のセルの右枠線はfield全体のoutlineが
+  あるので削除 */
 }
 
-    /* 左右分割・間に枠線 */
     .cell-inner-left {
-      flex: 1 1 0;
-      text-align: right;
-      padding-right: 4px;
-      border-right: 1px solid #000;
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      height: 100%;
-      box-sizing: border-box;
-    }
+  flex: 1 1 0;
+  /* 親のflexコンテナ内で、1の比率で成長・縮小し、
+  初期サイズは0とする */
+  text-align: right;
+  /* テキストやインライン要素を右寄せにする */
+  padding-right: 4px;
+  /* 右側に4pxの内側余白を追加する */
+  border-right: 1px solid #000;
+  /* 右側に1pxの黒い実線の境界線を引く */
+  display: flex;
+  /* この要素自体をflexコンテナにする */
+  align-items: center;
+  /* 子要素を垂直方向の中央に揃える */
+  justify-content: flex-end;
+  /* 子要素を水平方向の右端に揃える */
+  height: 100%;
+  /* 親要素の高さに合わせる */
+  box-sizing: border-box;
+  /* paddingやborderを含めて要素のサイズを計算する */
+}
+
 
     .cell-inner-right {
       flex: 2 1 0;
