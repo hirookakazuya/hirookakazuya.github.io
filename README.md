@@ -1067,94 +1067,63 @@ div										3	15		root_thislastyear_skuqty
 	div									2	3					
 	div									2	4					
 	div									2	5					
-div										3	16					</pre><script>
+div										3	16					</pre><pre>
+    /* 個別スタイル */
+.rowWrapper {
+    grid-template-columns: 100px 100px 250px 250px 250px 250px 200px 500px 450px 250px 250px 200px 200px 300px 300px  150px;
+}
+  
+.root_thislast-category {
+    grid-template-columns: 130px 120px;
+}
 
-    const structure = {
-      A: [{ id: "a1", dataKey: "A" }],
-      B: [{ id: "b1", dataKey: "B" }],
-      C: [
-        { id: "c1-1", label: "C1-1", dataKey: "C_1" },
-        { id: "c1-2", label: "C1-2", dataKey: "C_2" },
-        { id: "c1-3", label: "C1-3", dataKey: "C_3" },
-        { id: "c1-4", label: "C1-4", dataKey: "C_4" },
-        { id: "c1-5", label: "C1-5", dataKey: "C_5" }
-      ],
-      D: [
-        { id: "d1-1", label: "D1-1", dataKey: "D_1" },
-        { id: "d1-2", label: "D1-2", dataKey: "D_2" },
-        { id: "d1-3", label: "D1-3", dataKey: "D_3" },
-        { id: "d1-4", label: "D1-4", dataKey: "D_4" },
-        { id: "d1-5", label: "D1-5", dataKey: "D_5" }
-      ],
-      E: [
-        { id: "e1-1", label: "E1-1", dataKey: "E_1" },
-        { id: "e1-2", label: "E1-2", dataKey: "E_2" },
-        { id: "e1-3", label: "E1-3", dataKey: "E_3" },
-        { id: "e1-4", label: "E1-4", dataKey: "E_4" },
-        { id: "e1-5", label: "E1-5", dataKey: "E_5" }
-      ]
-    };
+.root_thislast-sample {
+    grid-template-columns: 150px 100px;
+}
 
-    function createCellInner(id, label, value) {
-      const wrapper = document.createElement("div");
-      wrapper.className = "cell-inner";
-      wrapper.innerHTML = `
-    ${label ? 
-    `<div class="cell-inner-left">
-      <label for="${id}">${label}</label>
-     </div>` : ""
-    }
-     <div class="cell-inner-right">
-      <input id="${id}" type="text" value="${value || ""}">
-     </div>
-  `;
-      return wrapper;
-    }
+.root_thislast-bender {
+    grid-template-columns: 120px 130px;
+}
 
-    function createRow(data) {
-      const row = document.createElement("div");
-      row.className = "row";
+.root_thislast-item {
+    grid-template-columns: 120px 130px;
+}
 
-      for (const group in structure) {
-        const groupDiv = document.createElement("div");
-        groupDiv.className = `cell group_${group}`;
+.root_this-picture_form {
+    grid-template-rows: 5fr 1fr;  
+}
 
-        structure[group].forEach(field => {
-          const { id, label, dataKey } = field;
-          const value = data[dataKey] || "";
-          const cellInner = createCellInner(id, label, value);
-          groupDiv.appendChild(cellInner);
-        });
+.root_thisyear_promoion {
+    grid-template-rows: 1fr 1fr 1fr 4fr;
+}
 
-        row.appendChild(groupDiv);
-      }
+.root_thisyear_reference {
+    grid-template-rows: 1fr 6fr;
+}
 
-      return row;
-    }
+.root_thislastyear-delivery {
+    grid-template-columns: 4fr 3fr 3fr 3fr;
+}
 
+.root_thislastyear-price {
+    grid-template-columns: 4fr 3fr;
+}
 
-    const sampleData = [
-      {
-        A: "a", B: "b",
-        C_1: "c", C_2: "d", C_3: "e", C_4: "f", C_5: "g",
-        D_1: "h", D_2: "i", D_3: "j", D_4: "k", D_5: "l",
-        E_1: "m", E_2: "n", E_3: "o", E_4: "p", E_5: "q"
-      },
-      {
-        A: "a", B: "b",
-        C_1: "c", C_2: "d", C_3: "e", C_4: "f", C_5: "g",
-        D_1: "h", D_2: "i", D_3: "j", D_4: "k", D_5: "l",
-        E_1: "m", E_2: "n", E_3: "o", E_4: "p", E_5: "q"
-      },
-      // add more rows as needed
-    ];
+.root_thislastyear_cost {
+    grid-template-columns: 4fr 3fr;
+}
 
-    const table = document.getElementById("table");
-    sampleData.forEach(data => {
-      table.appendChild(createRow(data));
-    });
+.root_thislastyear_fob {
+    grid-template-columns: 4fr 3fr;
+}
 
-  </script>
+.root_thislastyear_grobalqty {
+    grid-template-columns: 4fr 3fr;
+}
+
+.root_thislastyear_ec {
+    grid-template-columns: 3fr 4fr 4fr;
+}</pre>
 </body>
 
 </html>
