@@ -211,8 +211,59 @@
   <footer>
     <p>&copy; 2025 My Website</p>
   </footer>
+<pre>
+    const data = [
+      {
+        "thisyear": "2025"
+      },
+      {
+        "thisyear": "2025"
+      }
+    ];
 
-  <script>
+
+    function renderNode(node, record) {
+
+        const el = document.createElement(node.tag);
+
+        if (node.row) { el.style.gridRow = node.row; }
+        if (node.column) { el.style.gridColumn = node.column; }
+        if (node.id) { el.setAttribute('id', node.id); }
+        if (node.class) { el.className = node.class; }
+        if (node.for) { el.setAttribute('for', node.for); }
+        if (node.value) { el.setAttribute('value', node.value); }
+        if (node.text) { el.textContent = node.text; }
+
+        //if (node.field && record[node.field]) { node.value = record[node.field]; }
+
+        if (Array.isArray(node.children)) {
+          el.style.display = 'grid';
+          node.children.forEach(child => {
+            el.appendChild(renderNode(child));
+          });
+        }
+
+        return el;
+    }
+
+    function renderTable(structure, data) {
+      console.log('テーブルレンダー');
+      const table = document.getElementById('table');
+      let i = 1;
+      data.forEach(record => {
+        const rowWrapper = document.createElement('div');
+        rowWrapper.className = 'rowWrapper';
+        rowWrapper.style.display ='grid';
+        rowWrapper.style.gridRow = i;
+        structure.forEach(node => {
+          rowWrapper.appendChild(renderNode(node, record));
+        });
+        table.appendChild(rowWrapper);
+        i = i + 1;
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => { renderTable(structure, data); });</pre>  <script>
 
     const structure = {
       A: [{ id: "a1", dataKey: "A" }],
