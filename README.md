@@ -263,7 +263,811 @@
       });
     }
 
-    document.addEventListener('DOMContentLoaded', () => { renderTable(structure, data); });</pre>  <script>
+    document.addEventListener('DOMContentLoaded', () => { renderTable(structure, data); });</pre><pre>
+node_1	node_2	node_3	node_4	node_5	node_6	node_7	node_8	node_9	node_10	row	column	id	class	value	for	text
+div										1	1					
+	label															年度
+div										1	2					
+	label															進捗
+div										1	3					
+	label															品種/品名情報
+div										1	4					
+	label															書類/サンプル情報
+div										1	5					
+	label															取引先情報
+div										1	6					
+	label															商品情報
+div										1	7					
+	label															絵型または商品画像
+div										1	8					
+	label															備考/前年実績
+div										1	9					
+	label															納期情報
+div										1	10					
+	label															売価情報
+div										1	11					
+	label															原価情報
+div										1	12					
+	label															FOB情報
+div										1	13					
+	label															計画数
+div										1	14					
+	label															ネットEC情報
+div										1	15					
+	label															色サイズ別計画数
+div										1	16					
+	label															属性
+div										2	1					
+	input															
+div										2	2					
+	input															
+div										2	3		root_thislast-category			
+	div									1	1					
+		label														部門品種
+	div									1	2					
+		input														
+	div									2	1					
+		label														品種名
+	div									2	2					
+		input														
+	div									3	1					
+		label														メーカ品番
+	div									3	2					
+		input														
+	div									4	1					
+		label														商品名
+	div									4	2					
+		input														
+	div									5	1					
+		label														インストアCD
+	div									5	2					
+		input														
+	div									6	1					
+		label														品種グループ名
+	div									6	2					
+		input														
+	div									7	1					
+		label														品種シーズン
+	div									7	2					
+		input														
+div										2	4		root_thislast-sample			
+	div									1	1					
+		label														注サン発行日
+	div									1	2					
+		input														
+	div									2	1					
+		label														注文書発行日
+	div									2	2					
+		input														
+	div									3	1					
+		label														台帳発行日
+	div									3	2					
+		input														
+	div									4	1					
+		label														注サン到着日
+	div									4	2					
+		input														
+	div									5	1					
+		label														注サン出荷日
+	div									5	2					
+		input														
+	div									6	1					
+		label														確サン保管開始日
+	div									6	2					
+		input														
+	div									7	1					
+		label														確サン出荷日
+	div									7	2					
+		input														
+div										2	5		root_thislast-bender			
+	div									1	1					
+		label														取引先CD
+	div									1	2					
+		input														
+	div									2	1					
+		label														取引先名
+	div									2	2					
+		input														
+	div									3	1					
+		label														企画会社名
+	div									3	2					
+		input														
+	div									4	1					
+		label														企画会社有無
+	div									4	2					
+		input														
+	div									5	1					
+		label														取引分類
+	div									5	2					
+		input														
+	div									6	1					
+		label														代行輸入公司名
+	div									6	2					
+		input														
+	div									7	1					
+		label														原産国
+	div									7	2					
+		input														
+div										2	6		root_thislast-item			
+	div									1	1					
+		label														企画区分
+	div									1	2					
+		input														
+	div									2	1					
+		label														年数（○年目）
+	div									2	2					
+		input														
+	div									3	1					
+		label														販売単位入数
+	div									3	2					
+		input														
+	div									4	1					
+		label														Mdser.名
+	div									4	2					
+		input														
+	div									5	1					
+		label														ブランド
+	div									5	2					
+		input														
+	div									6	1					
+		label														QR
+	div									6	2					
+		input														
+	div									7	1					
+		label														素材
+	div									7	2					
+		input														
+div										2	7					
+	div															
+		form											root_this-picture_form			
+			input							1	1					
+			button							2	1					upload
+div										2	8					
+	div									1	1		root_thisyear_promoion			
+		div								1	1					
+			label													チラシ日付
+		div								2	1					
+			input													
+		div								3	1					
+			label													その他販促計画
+		div								4	1					
+			input													
+	div									1	2		root_thisyear_reference			
+		div								1	1					
+			label													備考
+		div								2	1					
+			input													
+div										2	9		root_thislastyear-delivery			
+	div									1	1					
+	div									1	2					
+		label														分納1
+	div									1	3					
+		label														分納2
+	div									1	4					
+		label														分納3
+	div									2	1					
+		label														店頭
+	div									2	2					
+		input														
+	div									2	3					
+		input														
+	div									2	4					
+		input														
+	div									3	1					
+		label														センター
+	div									3	2					
+		input														
+	div									3	3					
+		input														
+	div									3	4					
+		input														
+	div									4	1					
+		label														SHIP
+	div									4	2					
+		input														
+	div									4	3					
+		input														
+	div									4	4					
+		input														
+	div									5	1					
+		label														検品所
+	div									5	2					
+		input														
+	div									5	3					
+		input														
+	div									5	4					
+		input														
+	div									6	1					
+		label														初回投入週
+	div									6	2					
+		input														
+	div									6	3					
+		input														
+	div									6	4					
+		input														
+div										2	10		root_thislastyear_price			
+	div									1	1					
+		label														売単価
+	div									1	2					
+		input														
+	div									2	1					
+		label														総額
+	div									2	2					
+		input														
+	div									3	1					
+		label														
+	div									3	2					
+		input														
+	div									4	1					
+		label														仕入売価（千円）
+	div									4	2					
+		input														
+	div									5	1					
+		label														1枚換算
+	div									5	2					
+		input														
+	div									6	1					
+		label														1枚換算（税込）
+	div									6	2					
+		input														
+	div									7	1					
+		label														ネット販売（千円）
+	div									7	2					
+		input														
+div										2	11		root_thislastyear_cost			
+	div									1	1					
+		label														原単価
+	div									1	2					
+		input														
+	div									2	1					
+		label														値入率
+	div									2	2					
+		input														
+	div									3	1					
+		label														
+	div									3	2					
+		input														
+	div									4	1					
+		label														仕入原価（千円）
+	div									4	2					
+		input														
+	div									5	1					
+		label														1枚換算
+	div									5	2					
+		input														
+	div									6	1					
+		label														
+	div									6	2					
+		input														
+	div									7	1					
+		label														ネット販売（千円）
+	div									7	2					
+		input														
+div										2	12		root_thislastyear_fob			
+	div									1	1					
+		label														FOB単価
+	div									1	2					
+		input														
+	div									2	1					
+		label														決済通貨
+	div									2	2					
+		input														
+	div									3	1					
+		label														経費係数
+	div									3	2					
+		input														
+	div									4	1					
+		label														FOB金額
+	div									4	2					
+		input														
+	div									5	1					
+		label														1枚換算
+	div									5	2					
+		input														
+	div									6	1					
+		label														
+	div									6	2					
+		input														
+	div									7	1					
+		label														ネット販売
+	div									7	2					
+		input														
+div										2	13		root_thislastyear_grobalqty			
+	div									1	1					
+		label														計画数
+	div									1	2					
+		input														
+	div									2	1					
+		label														SKU数
+	div									2	2					
+		input														
+	div									3	1					
+		label														
+	div									3	2					
+		input														
+	div									4	1					
+		label														
+	div									4	2					
+		input														
+	div									5	1					
+		label														1枚換算
+	div									5	2					
+		input														
+	div									6	1					
+		label														ネット比率
+	div									6	2					
+		input														
+	div									7	1					
+		label														ネット販売
+	div									7	2					
+		input														
+div										2	14		root_thislastyear_ec			
+	div									1	1					
+		label														国名
+	div									1	2					
+		label														可／不可
+	div									1	3					
+		label														その他理由
+	div									2	1					
+		label														中国
+	div									2	2					
+		input														
+	div									2	3					
+		input														
+	div									3	1					
+		label														台湾
+	div									3	2					
+		input														
+	div									3	3					
+		input														
+	div									4	1					
+		label														
+	div									4	2					
+		input														
+	div									4	3					
+		input														
+	div									5	1					
+		label														
+	div									5	2					
+		input														
+	div									5	3					
+		input														
+	div									6	1					
+		label														
+	div									6	2					
+		input														
+	div									6	3					
+		input														
+	div									7	1					
+		label														
+	div									7	2					
+		input														
+	div									7	3					
+		input														
+div										2	15		root_thislastyear_skuqty			
+	div									1	1					
+		label														納期1
+	div									1	2					
+		label														納期2
+	div									1	3					
+		label														納期3
+	div									1	4					
+		label														合計
+	div									1	5					
+		label														アソート情報
+	div									2	1					
+	div									2	2					
+	div									2	3					
+	div									2	4					
+	div									2	5					
+div										2	16					
+div										3	1					
+	input															
+div										3	2					
+	input															
+div										3	3		root_thislast-category			
+	div									1	1					
+		label														部門品種
+	div									1	2					
+		input														
+	div									2	1					
+		label														品種名
+	div									2	2					
+		input														
+	div									3	1					
+		label														メーカ品番
+	div									3	2					
+		input														
+	div									4	1					
+		label														商品名
+	div									4	2					
+		input														
+	div									5	1					
+		label														インストアCD
+	div									5	2					
+		input														
+	div									6	1					
+		label														品種グループ名
+	div									6	2					
+		input														
+	div									7	1					
+		label														品種シーズン
+	div									7	2					
+		input														
+div										3	4		root_thislast-sample			
+	div									1	1					
+		label														注サン発行日
+	div									1	2					
+		input														
+	div									2	1					
+		label														注文書発行日
+	div									2	2					
+		input														
+	div									3	1					
+		label														台帳発行日
+	div									3	2					
+		input														
+	div									4	1					
+		label														注サン到着日
+	div									4	2					
+		input														
+	div									5	1					
+		label														注サン出荷日
+	div									5	2					
+		input														
+	div									6	1					
+		label														確サン保管開始日
+	div									6	2					
+		input														
+	div									7	1					
+		label														確サン出荷日
+	div									7	2					
+		input														
+div										3	5		root_thislast-bender			
+	div									1	1					
+		label														取引先CD
+	div									1	2					
+		input														
+	div									2	1					
+		label														取引先名
+	div									2	2					
+		input														
+	div									3	1					
+		label														企画会社名
+	div									3	2					
+		input														
+	div									4	1					
+		label														企画会社有無
+	div									4	2					
+		input														
+	div									5	1					
+		label														取引分類
+	div									5	2					
+		input														
+	div									6	1					
+		label														代行輸入公司名
+	div									6	2					
+		input														
+	div									7	1					
+		label														原産国
+	div									7	2					
+		input														
+div										3	6		root_thislast-item			
+	div									1	1					
+		label														企画区分
+	div									1	2					
+		input														
+	div									2	1					
+		label														年数（○年目）
+	div									2	2					
+		input														
+	div									3	1					
+		label														販売単位入数
+	div									3	2					
+		input														
+	div									4	1					
+		label														Mdser.名
+	div									4	2					
+		input														
+	div									5	1					
+		label														ブランド
+	div									5	2					
+		input														
+	div									6	1					
+		label														QR
+	div									6	2					
+		input														
+	div									7	1					
+		label														素材
+	div									7	2					
+		input														
+div										3	7					
+	div															
+		form														
+			input							1	1					
+div										3	8					
+	div									1	1					
+		div								1	1					
+			label													仕入高（千円）
+		div								1	2					
+			input													
+		div								2	1					
+			label													売上高（千円）
+		div								2	2					
+			input													
+		div								3	1					
+			label													売変高（千円）
+		div								3	2					
+			input													
+		div								4	1					
+			label													荒利高（千円）
+		div								4	2					
+			input													
+		div								5	1					
+			label													在庫高（千円）
+		div								5	2					
+			input													
+		div								6	1					
+			label													投入時売価販売数
+		div								6	2					
+			input													
+		div								7	1					
+			label													荒利対仕入売価
+		div								7	2					
+			input													
+	div									1	2					
+		div								1	1					
+			label													仕入数
+		div								1	2					
+			input													
+		div								2	1					
+			label													売数
+		div								2	2					
+			input													
+		div								3	1					
+			label													売変率
+		div								3	2					
+			input													
+		div								4	1					
+			label													荒利率
+		div								4	2					
+			input													
+		div								5	1					
+			label													在庫数
+		div								5	2					
+			input													
+		div								6	1					
+			label													投入時売価販売率
+		div								6	2					
+			input													
+		div								7	1					
+			label													販売率
+		div								7	2					
+			input													
+div										3	9		root_thislastyear-delivery			
+	div									1	1					
+	div									1	2					
+		label														分納1
+	div									1	3					
+		label														分納2
+	div									1	4					
+		label														分納3
+	div									2	1					
+		label														店頭
+	div									2	2					
+		input														
+	div									2	3					
+		input														
+	div									2	4					
+		input														
+	div									3	1					
+		label														センター
+	div									3	2					
+		input														
+	div									3	3					
+		input														
+	div									3	4					
+		input														
+	div									4	1					
+		label														SHIP
+	div									4	2					
+		input														
+	div									4	3					
+		input														
+	div									4	4					
+		input														
+	div									5	1					
+		label														検品所
+	div									5	2					
+		input														
+	div									5	3					
+		input														
+	div									5	4					
+		input														
+	div									6	1					
+		label														初回投入週
+	div									6	2					
+		input														
+	div									6	3					
+		input														
+	div									6	4					
+		input														
+div										3	10		root_thislastyear_price			
+	div									1	1					
+		label														売単価
+	div									1	2					
+		input														
+	div									2	1					
+		label														総額
+	div									2	2					
+		input														
+	div									3	1					
+		label														
+	div									3	2					
+		input														
+	div									4	1					
+		label														仕入売価（千円）
+	div									4	2					
+		input														
+	div									5	1					
+		label														1枚換算
+	div									5	2					
+		input														
+	div									6	1					
+		label														1枚換算（税込）
+	div									6	2					
+		input														
+	div									7	1					
+		label														ネット販売（千円）
+	div									7	2					
+		input														
+div										3	11		root_thislastyear_cost			
+	div									1	1					
+		label														原単価（計画）
+	div									1	2					
+		input														
+	div									2	1					
+		label														原単価（実績）
+	div									2	2					
+		input														
+	div									3	1					
+		label														値入率
+	div									3	2					
+		input														
+	div									4	1					
+		label														仕入原価（千円）
+	div									4	2					
+		input														
+	div									5	1					
+		label														1枚換算
+	div									5	2					
+		input														
+	div									6	1					
+		label														実績原価（千円）
+	div									6	2					
+		input														
+	div									7	1					
+		label														ネット販売（千円）
+	div									7	2					
+		input														
+div										3	12		root_thislastyear_fob			
+	div									1	1					
+		label														FOB単価
+	div									1	2					
+		input														
+	div									2	1					
+		label														決済通貨
+	div									2	2					
+		input														
+	div									3	1					
+		label														経費係数
+	div									3	2					
+		input														
+	div									4	1					
+		label														FOB金額
+	div									4	2					
+		input														
+	div									5	1					
+		label														1枚換算
+	div									5	2					
+		input														
+	div									6	1					
+		label														
+	div									6	2					
+		input														
+	div									7	1					
+		label														ネット販売
+	div									7	2					
+		input														
+div										3	13		root_thislastyear_grobalqty			
+	div									1	1					
+		label														計画数
+	div									1	2					
+		input														
+	div									2	1					
+		label														SKU数
+	div									2	2					
+		input														
+	div									3	1					
+		label														
+	div									3	2					
+		input														
+	div									4	1					
+		label														
+	div									4	2					
+		input														
+	div									5	1					
+		label														1枚換算
+	div									5	2					
+		input														
+	div									6	1					
+		label														ネット比率
+	div									6	2					
+		input														
+	div									7	1					
+		label														ネット販売
+	div									7	2					
+		input														
+div										3	14		root_thislastyear_ec			
+	div									1	1					
+		label														国名
+	div									1	2					
+		label														可／不可
+	div									1	3					
+		label														その他理由
+	div									2	1					
+		label														中国
+	div									2	2					
+		input														
+	div									2	3					
+		input														
+	div									3	1					
+		label														台湾
+	div									3	2					
+		input														
+	div									3	3					
+		input														
+	div									4	1					
+		label														
+	div									4	2					
+		input														
+	div									4	3					
+		input														
+	div									5	1					
+		label														
+	div									5	2					
+		input														
+	div									5	3					
+		input														
+	div									6	1					
+		label														
+	div									6	2					
+		input														
+	div									6	3					
+		input														
+	div									7	1					
+		label														
+	div									7	2					
+		input														
+	div									7	3					
+		input														
+div										3	15		root_thislastyear_skuqty			
+	div									1	1					
+		label														納期1
+	div									1	2					
+		label														納期2
+	div									1	3					
+		label														納期3
+	div									1	4					
+		label														合計
+	div									1	5					
+		label														アソート情報
+	div									2	1					
+	div									2	2					
+	div									2	3					
+	div									2	4					
+	div									2	5					
+div										3	16					</pre><script>
 
     const structure = {
       A: [{ id: "a1", dataKey: "A" }],
