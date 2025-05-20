@@ -1124,6 +1124,201 @@ div										3	16					</pre><pre>
 .root_thislastyear_ec {
     grid-template-columns: 3fr 4fr 4fr;
 }</pre>
+<pre>
+**ビュー選択の仕組みをどうやって構築するか？ビューによってスイッチする方法は？**
+
+前読み込みプラス参照切り替えを行う。
+
+```jsx
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>ビュー切替テスト</title>
+  <style>
+    /* お好きに grid 定義 */
+  </style>
+</head>
+<body>
+  <div id="toolbar">
+    <label for="viewSelect">ビュー：</label>
+    <select id="viewSelect">
+      <option value="defaultView">標準</option>
+      <option value="compactView">コンパクト</option>
+      <option value="detailView">詳細</option>
+    </select>
+  </div>
+  <div id="table"></div>
+
+  <!-- 外部ファイルを先に読み込んでおく -->
+  <script src="views/defaultView.js"></script>
+  <script src="views/compactView.js"></script>
+  <script src="views/detailView.js"></script>
+
+  <!-- main.js で window.structures を参照 -->
+  <script src="main.js"></script>
+</body>
+</html>
+```
+
+```jsx
+// views/defaultView.js
+//window.＊＊はグローバルスコープの変数
+window.structures = window.structures || {};
+window.structures.defaultView = [
+  { tag:'div', row:1, column:1, /* … */ },
+  /* … */
+];
+```
+
+```jsx
+// main.js
+const viewSelect = document.getElementById('viewSelect');
+const table = document.getElementById('table');
+
+function fetchDataAndRender(viewKey) {
+  const structure = window.structures[viewKey];
+  if (!structure) {
+    console.error('構造データが存在しません:', viewKey);
+    return;
+  }
+  //初期化
+  const data = window.data || [];
+  table.innerHTML = '';
+  renderTable(structure, data);
+}
+
+viewSelect.addEventListener('change', () => {
+  fetchDataAndRender(viewSelect.value);
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  fetchDataAndRender(viewSelect.value);
+});
+```
+
+**開発段階で(本番でも)、JSONを直接読み込ませる方法はあるか？**
+
+これは難しいようだ。そして、開発中はjsファイルで管理して、本番でjsonに置き換えるというのは、一般的な方法らしい。
+
+**データで前年と当年どのようにして結合するか？**
+
+データもJSON形式です。データの一レコードは、単年のデータですが、画面をレンダーする時には、当年と前年をキーで結合して、セット表示します。この結合は、renderTableに、dataを渡す前に行い、dataのrecordは当年と前年が結合されています。
+
+```jsx
+/**
+ * 当年・前年データをキーで合流（outer join）しつつ、どちらか一方にしかないキーも含める
+ * @param {Array<Object>} currentData - 当年データ
+ * @param {Array<Object>} prevData    - 前年データ
+ * @param {string} key                - 結合キー属性名
+ * @returns {Array<Object>}           - マージ後レコード配列
+ */
+function mergeAllKeys(currentData, prevData, key) {
+  // 1) まずキー→レコードのマップを作成
+  const currMap = {};
+  currentData.forEach(r => { currMap[r[key]] = r; });
+  const prevMap = {};
+  prevData.forEach(r => { prevMap[r[key]] = r; });
+
+  // 2) currentData と prevData のキーを両方取って Set 化
+  const allKeys = new Set([
+    ...currentData.map(r => r[key]),
+    ...prevData.map(r => r[key])
+  ]);
+
+  // 3) すべてのキーについてマージレコードを作成
+  const merged = [];
+  allKeys.forEach(k => {
+    const curr = currMap[k] || {};
+    const prev = prevMap[k] || {};
+
+    // 前年フィールドに _prev 接尾辞を付けつつ
+    //Object.entries(prev):prevオブジェクトの [キー, 値] のペアを配列で取得
+    // => [['品番', 'A001'], ['数量', 8]]
+    //.reduce((acc, [field, val]) => { ... }, {})
+    //reduce は配列の要素を一つずつ処理して、1つのオブジェクト（acc）を作成
+    //初期値は {}
+    const prevWithSuffix = Object.entries(prev).reduce((acc, [field, val]) => {
+      acc[`${field}_prev`] = val;
+      return acc;
+    }, {});
+
+    // マージして追加
+    merged.push({
+      // キー項目は必ず入れる
+      [key]: k,
+      ...curr,
+      ...prevWithSuffix
+    });
+  });
+
+  return merged;
+}
+
+// — 使用例 —
+const currentData = [
+  { 品番: 'A001', 数量: 10 },
+  { 品番: 'B123', 数量: 5 },
+];
+const prevData = [
+  { 品番: 'A001', 数量: 8 },
+  { 品番: 'C999', 数量: 12 },
+];
+
+console.log( mergeAllKeys(currentData, prevData, '品番') );
+/* 出力例:
+[
+  { 品番:'A001', 数量:10, 数量_prev:8 },
+  { 品番:'B123', 数量:5 },
+  { 品番:'C999', 数量_prev:12 }
+]
+*/
+```
+
+画像の読み込みと登録。
+
+集計。
+
+**selectタグの選択肢をどうやって管理するか？**
+
+optionListを定義し、structureにマージする。structureにoption keyが必要。
+
+```jsx
+export const optionLists = {
+  clients: [
+    { value: 'A', label: 'A商事' },
+    { value: 'B', label: 'B商事' },
+    // …
+  ],
+  // 他のリストも同じidで
+};
+```
+
+```jsx
+// init.js
+
+function mergeOptions(nodes) {
+  return nodes.map(node => {
+    let merged = { ...node };
+    if (node.tag === 'select') {
+      // node.id をキーに使う
+      const opts = optionLists[node.id] || [];
+      merged.children = opts.map(o => ({
+        tag:   'option',
+        value: o.value,
+        text:  o.label,
+      }));
+    }
+    if (node.children) {
+      merged.children = mergeOptions(merged.children);
+    }
+    return merged;
+  });
+}
+
+export const structure = mergeOptions(rawStructure);
+```
+</pre>
 </body>
 
 </html>
