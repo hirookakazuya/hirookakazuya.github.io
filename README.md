@@ -1318,6 +1318,44 @@ function mergeOptions(nodes) {
 
 export const structure = mergeOptions(rawStructure);
 ```
+
+function adjustGridBorders(gridContainer) {
+    // 対象となる「このグリッド」の直下のセルだけを取得
+    const cells = Array.from(gridContainer.children);
+
+    let maxRow = 1;
+    let maxCol = 1;
+
+    const cellPositions = cells.map(cell => {
+        const row = parseInt(cell.style.gridRow || '1', 10);
+        const col = parseInt(cell.style.gridColumn || '1', 10);
+
+        if (row > maxRow) maxRow = row;
+        if (col > maxCol) maxCol = col;
+
+        return { cell, row, col };
+    });
+
+    // 線をいったん全体に引いて、右端・下端だけ消す
+    cellPositions.forEach(({ cell, row, col }) => {
+        cell.style.borderRight = '1px solid #ccc';
+        cell.style.borderBottom = '1px solid #ccc';
+
+        if (col === maxCol) cell.style.borderRight = 'none';
+        if (row === maxRow) cell.style.borderBottom = 'none';
+    });
+
+    // 外枠
+    gridContainer.style.outline = '1px solid #ccc';
+
+    // ⬇️ 再帰的にネストされたグリッドにも適用
+    Array.from(gridContainer.children).forEach(child => {
+        if (child.style.display === 'grid') {
+            adjustGridBorders(child);
+        }
+    });
+}
+
 </pre>
 </body>
 
