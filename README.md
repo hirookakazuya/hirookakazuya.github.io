@@ -246,22 +246,32 @@
         return el;
     }
 
-    function renderTable(structure, data) {
-      console.log('テーブルレンダー');
-      const table = document.getElementById('table');
-      let i = 1;
-      data.forEach(record => {
-        const rowWrapper = document.createElement('div');
-        rowWrapper.className = 'rowWrapper';
-        rowWrapper.style.display ='grid';
-        rowWrapper.style.gridRow = i;
-        structure.forEach(node => {
-          rowWrapper.appendChild(renderNode(node, record));
-        });
-        table.appendChild(rowWrapper);
-        i = i + 1;
-      });
+function renderTable(structure, data) {
+  const table = document.getElementById('table');
+  let i = 1;
+
+  data.forEach((record, index) => {
+    const rowWrapper = document.createElement('div');
+    rowWrapper.className = 'rowWrapper';
+    rowWrapper.style.display = 'grid';
+    rowWrapper.style.gridRow = i;
+
+    let nodesToRender;
+    if (index === 0) {
+      nodesToRender = structure;
+    } else {
+      nodesToRender = structure.filter(node => node.row !== 1);
     }
+
+    nodesToRender.forEach(node => {
+      const rendered = renderNode(node, record);
+      rowWrapper.appendChild(rendered);
+    });
+
+    table.appendChild(rowWrapper);
+    i = i + 1;
+  });
+}
 
     document.addEventListener('DOMContentLoaded', () => { renderTable(structure, data); });</pre><pre>
 node_1	node_2	node_3	node_4	node_5	node_6	node_7	node_8	node_9	node_10	row	column	id	class	value	for	text
