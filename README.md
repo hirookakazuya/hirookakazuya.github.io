@@ -76,7 +76,7 @@ const renderNode = (node, record, selectOption) => {
 
 ---------------
 
-const renderControl = (mountPointId, controlLayout) => {
+const renderControl = (mountPointId, controlLayout, data, selectOption) => {
     const el = document.getElementById(mountPointId);
     if (!el) {
         console.warn(`Mount point '${mountPointId}' not found.`);
@@ -91,7 +91,7 @@ const renderControl = (mountPointId, controlLayout) => {
     const fragment = document.createDocumentFragment();
 
     controlLayout.forEach(node => {
-        const rendered = renderNode(node);
+        const rendered = renderNode(node, data, selectOption);
         if (rendered instanceof Node) {
             fragment.appendChild(rendered);
         } else {
@@ -105,7 +105,7 @@ const renderControl = (mountPointId, controlLayout) => {
 
 ---------------
 
-const renderTable = (mountPointId, tableLayout, data, startIndex, endIndex, className) => {
+const renderTable = (mountPointId, tableLayout, data, startIndex, endIndex, className, selectOption) => {
     const table = document.getElementById(mountPointId);
     if (!table) {
         console.warn(`Element with ID '${mountPointId}' not found.`);
@@ -131,7 +131,7 @@ const renderTable = (mountPointId, tableLayout, data, startIndex, endIndex, clas
         }
 
         nodeToRender.forEach(node => {
-            const rendered = renderNode(node, record);
+            const rendered = renderNode(node, record, selectOption);
             if (rendered instanceof Node) {
                 rowWrapper.appendChild(rendered);
             } else {
@@ -146,7 +146,9 @@ const renderTable = (mountPointId, tableLayout, data, startIndex, endIndex, clas
     table.innerHTML = '';
     table.appendChild(fragment);
     adjustBorderLine(table);
+    adjustBackgroundColor(table);
 };
+
 
 ---------------
 
