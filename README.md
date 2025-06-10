@@ -20,7 +20,9 @@ const createStore = (initialState) => {
   return { getState, setState, subscribe };
 };
 
-const renderNode = (node, record) => {
+---------------
+
+const renderNode = (node, record, selectOption) => {
   if (!node.tag) throw new Error("node.tag is required");
   const el = document.createElement(node.tag);
 
@@ -39,6 +41,7 @@ const renderNode = (node, record) => {
       el.value = record[node.field];
     }
   }
+  
   if (node.tag.toLowerCase() === 'select') {
     if (selectOption && selectOption[node.id] && node.id ) {
       selectOption[node.id].forEach( opt => {
@@ -71,6 +74,8 @@ const renderNode = (node, record) => {
   return el;
 };
 
+---------------
+
 const renderControl = (mountPointId, controlLayout) => {
     const el = document.getElementById(mountPointId);
     if (!el) {
@@ -97,6 +102,8 @@ const renderControl = (mountPointId, controlLayout) => {
     el.innerHTML = '';
     el.appendChild(fragment);
 };
+
+---------------
 
 const renderTable = (mountPointId, tableLayout, data, startIndex, endIndex, className) => {
     const table = document.getElementById(mountPointId);
@@ -141,6 +148,8 @@ const renderTable = (mountPointId, tableLayout, data, startIndex, endIndex, clas
     adjustBorderLine(table);
 };
 
+---------------
+
 const adjustBorderLine = (container) => {
   const cells = Array.from(container.children);
 
@@ -176,6 +185,8 @@ const adjustBorderLine = (container) => {
   });
 };
 
+---------------
+
 const adjustBackgroundColor = (container) => {
   const cells = Array.from(container.children);
   cells.forEach(cell => {
@@ -185,6 +196,8 @@ const adjustBackgroundColor = (container) => {
     }
   });
 };
+
+---------------
 
 const mergeData = (currentData, prevData, key ) => {
   const merged = [];
@@ -197,7 +210,6 @@ const mergeData = (currentData, prevData, key ) => {
     ...currentData.map(r => r[key]),
     ...prevData.map( r => r[key])
   ]);
-
 
   allKeys.forEach(k =>{
     const curr = currMap[k]||{};
@@ -220,6 +232,8 @@ const mergeData = (currentData, prevData, key ) => {
 
 };
 
+---------------
+
 const filterData = ( data, keyWord ) => {
   return data.filter( record => {
     return Object.values(record).some( value => {
@@ -227,6 +241,8 @@ const filterData = ( data, keyWord ) => {
     });
   });
 };
+
+---------------
 
 const showModal = (recordId) => {
   const modalOverlay = document.createElement('div');
@@ -259,6 +275,8 @@ const showModal = (recordId) => {
     modalBody.textContent = '対象のレコードがありません';
   }
 };
+
+---------------
 
 const renderPagination = ( mountPointId, controlState ) => {
 
