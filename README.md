@@ -29,14 +29,29 @@ const renderNode = (node, record) => {
     if (node[attribute]) el.setAttribute(attribute, node[attribute]);
   });
 
-  if (node.field && record && record[node.field]) {
-    el.setAttribute('value', record[node.field]);
-  }
-
   if (node.row) el.style.gridRow = node.row;
   if (node.column) el.style.gridColumn = node.column;
 
   if (node.text) el.textContent = node.text;
+
+  if (node.tag.toLowerCase() === 'input') {
+    if (node.field && record && record[node.field]) {
+      el.value = record[node.field];
+    }
+  }
+  if (node.tag.toLowerCase() === 'select') {
+    if (selectOption && selectOption[node.id] && node.id ) {
+      selectOption[node.id].forEach( opt => {
+        const option = document.createElement('option');
+        option.value = opt.value;
+        option.textContent = opt.text;
+        el.appendChild(option);
+      });
+    }
+    if (node.field && record && record[node.field]) {
+      el.value = record[node.field];
+    }
+  }
 
   if (node.tag.toLowerCase() === 'button') {
     if (record && record.ManagementNo) {
@@ -46,9 +61,11 @@ const renderNode = (node, record) => {
 
   if (Array.isArray(node.children)) {
     el.style.display = 'grid';
+    const fragment = document.createDocumentFragment();
     node.children.forEach(child => {
-      el.appendChild(renderNode(child, record));
+      fragment.appendChild(renderNode(child, record));
     });
+    el.appendChild(fragment);
   }
 
   return el;
