@@ -328,4 +328,24 @@ const renderPagination = ( mountPointId, controlState ) => {
   pagination.appendChild(next);
 }
 
+---------------
+
+const attachYenFormatters = () => {
+  const inputs = document.querySelectorAll('[data-format="yen"]');
+
+  inputs.forEach(input => {
+    input.addEventListener('blur', (e) => {
+      const numeric = e.target.value.replace(/[^\d]/g, '');
+      const number = parseInt(numeric, 10);
+      e.target.value = isNaN(number) ? '' : '¥' + number.toLocaleString('ja-JP');
+    });
+
+    input.addEventListener('focus', (e) => {
+      const numeric = e.target.value.replace(/[^\d]/g, '');
+      e.target.value = numeric ? parseInt(numeric, 10) : '';
+    });
+  });
+}
+
+
 </pre>
