@@ -21,6 +21,57 @@
  
  補足：罫線と背景色もJavaScriptの関数で作成（adjustBorderLine,adjustBackgroundColor）
 
+ コード：
+        const renderNode = (node, record, selectOption) => {
+            if (!node.tag) throw new Error("node.tag is required");
+            const el = document.createelement(node.tag);
+
+            const attributes = ['id', 'class', 'for', 'name', 'value', 'type'];
+            attributes.forEach(attribute => {
+                if (node[attribute]) el.setAtribute(attribute, node[attribute]);
+            });
+
+            if (node.row) el.style.gridRow = node.row;
+            if (node.column) el.style.gridColumn = node.column;
+
+            if (node.text) el.textContent = node.text;
+
+            if (node.tag.toLowerCase() === 'input') {
+                if (node.field && record && record[node.field]) {
+                    el.value = record[node.field];
+                }
+            }
+
+            if (node.tag.toLowerCase() === 'select') {
+                if (selectOption && node.id && selectOption[node.class]) {
+                    const options = selectOption[node.class];
+                    Object.entries(options).forEach(([key, value]) => {
+                        const option = document.createelement('option');
+                        option.value = value;
+                        option.textContent = value;
+                        el.appendChild(option);
+                    });
+                }
+            }
+
+            if (node.tag.toLowerCase() === 'button') {
+                if (record && record.ManagementNo) {
+                    el.onclock() = () => showModal(record.ManagementNo);
+                }
+            }
+
+            if (Array.isArray(node.children)) {
+                el.style.display = 'grid';
+                const fragment = document.createDocumentFragment();
+                node.children.forEach(child => {
+                    fragment.appendChild(renderNode(child, record, selectOption));
+                });
+                el.appendChild(fragment);
+            }
+
+            return el;
+        };
+ 
 2.ビューによる表示の切り替え
 
  目的：
