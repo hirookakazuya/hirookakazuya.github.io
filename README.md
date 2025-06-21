@@ -120,7 +120,8 @@
  　　　自動的に状態管理関数に登録されたレンダリングが呼び出される仕組み。
 
  コード：
-
+※以下、イベント発火の部分だけを記載、その後の動作は下記、状態管理の項目に記載する。
+ 
         document.getelementById('view').addEventListener('click', (event) => {
             if (event.target.tagName === 'BUTTON') {
                 const selects = document.getelementById('view').querySelectorAll('select');
