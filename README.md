@@ -138,6 +138,7 @@
 3.状態管理
 
  目的：ビューやフィルタなどの状態を一元管理して、画面の変更と連動させる。
+　　　　ユーザが画面を開いたときに、前回ログイン時の状態をデータベースから呼び出す。
  
  内容：状態管理用の関数(controlStore)を作り、状態管理する。
  
@@ -146,9 +147,40 @@
       setState():状態を更新する。
       subscribe():状態が更新されたときに実行する関数を登録する。
       
-      subscribe()には、
- 
- 補足：
+      subscribe()には、現在のビューやフィルタの状態を使って、画面を再レンダリングする関数を登録する。
+      
+      画面更新の流れは以下。
+      1.ビューをリストから選択し、ボタンをクリックする。
+      　ボタンにはonclickイベントが設定されている。
+      2.イベント内で、setState()を実行し、ビューの状態を更新する。
+      3.setState()により、自動的に登録された画面更新の関数が実行される。
+      
+ 補足：データベース未作成。
+　　　　画面読み込みの際には、データベースから取得した値を状態管理関数に設定する。
+
+ コード:
+const createStore = (initialState) => {
+  let state = { ...initialState };
+  const listeners = new Set();
+
+  const getState = () => ({ ...state });
+
+  const setState = (partial) => {
+    state = { ...state, ...partial };
+    listeners.forEach(listener => {
+      listener(getState());
+    });
+  };
+
+  const subscribe = (listener) => {
+    listeners.add(listener);
+    return () => listeners.delete(listener);
+  };
+
+  return { getState, setState, subscribe };
+};
+
+
 
 4.当年と前年のデータの結合
 
