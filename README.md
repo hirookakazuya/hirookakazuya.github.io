@@ -22,26 +22,60 @@
  補足：罫線と背景色もJavaScriptの関数で作成（adjustBorderLine,adjustBackgroundColor）
 
  コード：
+ ※以下、画面作成の主要な部分のみ表示。
+ 
+        const renderTable = (mountPintId, tablelayout, data, startIndex, endIndex, className, selectOption) => {
+            const table = document.getelementById(mountPointId);
+            if (!table) {
+                console.warn(`element with ID '${mountPointId}' not found.`);
+                return;
+            }
+            const fragment = document.createDocumentFragment();
+            let i = 0;
+            const slicedData = data.slice(startIndex, endIndex);
+            slicedData.forEach((record, index) => {
+                const rowWrapper = doocument.createelement('div');
+                rowWrapper.syle.display = 'grid';
+                rowWrapper.classList.add(className);
+                rowWrapper.style.gridRow = String(i);
+                let nodeToRender;
+                if (index === 0) {
+                    nodeToRender = tablelayout;
+                } else {
+                    nodeToRender = tablelayout.filter(node => Number(node.row) !== 1);
+                }
+                nodeToRender.forEach(node => {
+                    const rendered = renderNode(node, record, selectOption);
+                    if (rendered instanceof Node) {
+                        rowWrapper.appendChild(rendered);
+                    } else {
+                        console.warn(`renderNode returned nn-node for`, node);
+                    }
+                });
+                fragment.appendChild(rowWrapper);
+                i++;
+            });
+            table.innerHTML = '';
+            table.appendChild(fragment);
+            adjustBorderLine(table);
+            adjustBackgroundColor(table);
+        };
+
         const renderNode = (node, record, selectOption) => {
             if (!node.tag) throw new Error("node.tag is required");
             const el = document.createelement(node.tag);
-
             const attributes = ['id', 'class', 'for', 'name', 'value', 'type'];
             attributes.forEach(attribute => {
                 if (node[attribute]) el.setAtribute(attribute, node[attribute]);
             });
-
             if (node.row) el.style.gridRow = node.row;
             if (node.column) el.style.gridColumn = node.column;
-
             if (node.text) el.textContent = node.text;
-
             if (node.tag.toLowerCase() === 'input') {
                 if (node.field && record && record[node.field]) {
                     el.value = record[node.field];
                 }
             }
-
             if (node.tag.toLowerCase() === 'select') {
                 if (selectOption && node.id && selectOption[node.class]) {
                     const options = selectOption[node.class];
@@ -53,13 +87,11 @@
                     });
                 }
             }
-
             if (node.tag.toLowerCase() === 'button') {
                 if (record && record.ManagementNo) {
                     el.onclock() = () => showModal(record.ManagementNo);
                 }
             }
-
             if (Array.isArray(node.children)) {
                 el.style.display = 'grid';
                 const fragment = document.createDocumentFragment();
@@ -68,19 +100,39 @@
                 });
                 el.appendChild(fragment);
             }
-
             return el;
         };
- 
+
 2.ビューによる表示の切り替え
 
- 目的：
+ 目的：ユーザの種類や作業のプロセスに合わせて表示を切り替えできること。任意の表示パターンを拡張できること。
  
- 内容：
+ 内容：ビューの切り替えにより、テーブルのフィールドと配置を切り替えること。フィルタ、集計項目も同様にビューと連動させること。
+ 　　　レイアウトをjson形式で作成し、パラメータとして開発フォルダに格納する。
  
- 方法：
+ 方法：ビューをリストから選択し、ボタンをクリックすると、イベント発火する。
+ 　　　選択したビューに対応する以下の項目をマスタから取得する。
+ 　　　①フィルタレイアウト、②集計レイアウト、③テーブルレイアウト、④ページあたりのアイテム数
+ 　　　マスタはjson配列で開発フォルダ内に格納されている。
+ 　　　上記で取得したレイアウトデータを画面レンダリング関数に渡し、ページを作成する。
  
- 補足：
+ 補足：イベント発火では、直接画面レンダリングの関数を呼び出すのではなく、状態管理関数にパラメータをセットする。
+ 　　　自動的に状態管理関数に登録されたレンダリングが呼び出される仕組み。
+
+ コード：
+
+        document.getelementById('view').addEventListener('click', (event) => {
+            if (event.target.tagName === 'BUTTON') {
+                const selects = document.getelementById('view').querySelectorAll('select');
+                const currentViewData = { ...controlStore.getState().viewData };
+                selects.forEach(select => {
+                    currentViewData[select.id] = select.value;
+                });
+                const currentPaginationData = { ...controlStore.getState().pagination };
+                currentPaginationData.currentPage = 1;
+                contrlStore.setState({ viewData: currentViewData, pagination: currentPaginationData })
+            }
+        });
 
 3.状態管理
 
