@@ -189,11 +189,50 @@ const createStore = (initialState) => {
  内容：データベースでは当年と前年は別のデータだが、フロント側で
 　　　　PositionNoをキーにして、同年と前年を結合し、一つのレコードにする。
 
- 方法：1.json形式の各レコードを変形し、キーをPositionNoにする。
+ 方法：1.json形式の各レコードを変形し、キーをPositionNo、値をレコードにする。
 　　　　
-      2.
+      2.同年と前年のデータを合算して、重複のないPositionNoのリストを作成する。
+      
+      3.2.で作成したリストの各要素について、当年と前年のレコードを結合する。
+      　※その際、前年レコードのキーには全て_prevを追加する。
  
- 補足：
+ 補足：別の方法も検討する。データベースに専用のテーブルを作成し、レコードの結合だけを管理。
+
+ コード：
+
+const mergeData = (currentData, prevData, key ) => {
+  const merged = [];
+  const currMap = {};
+  currentData.forEach( r => { currMap[r[key]] = r;});
+  const prevMap = {};
+  prevData.forEach( r => { prevMap[r[key]] = r;});
+
+  const allKeys = new Set([
+    ...currentData.map(r => r[key]),
+    ...prevData.map( r => r[key])
+  ]);
+
+
+  allKeys.forEach(k =>{
+    const curr = currMap[k]||{};
+    const prev = prevMap[k]||{};
+  
+    const prevWithSuffix = Object.entries(prev).reduce((acc,[field,val]) => {
+      acc['${field}_prev'] = val;
+      return acc;
+    },{});
+  
+    merged.push({
+      [key]:k,
+      ...curr,
+      ...prevWithSuffix
+    });
+  
+　　});
+
+  return merged;
+
+};
 
 5.ページネーション
 
