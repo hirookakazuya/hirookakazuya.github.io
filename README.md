@@ -97,6 +97,113 @@ const diff = currentRows.filter(row => {
 
 //基本的にはこの方針でいく。で、状態管理にはcontrolStoreを使う。データベース専用のStoreを一つ作る。シンプルで分かりやすいし、必ずそこを通し、currentDataStore.setState()すように統一する。変化した項目は、フロントでマークする。
 
+// データ本体
+const items = [
+  { id: 1, name: "A", price: 100 },
+  { id: 2, name: "B", price: 200 },
+];
+
+// dirty情報
+const dirtyMap = {
+  1: { name: false, price: true },
+  2: { name: false, price: false }
+};
+
+const initialItems = [
+  { id: 1, name: "A", price: 100 },
+  { id: 2, name: "B", price: 200 },
+];
+
+const createInitialDirtyMap = (items) => {
+  const map = {};
+  items.forEach(item => {
+    map[item.id] = {};
+    Object.keys(item).forEach(key => {
+      if (key !== "id") map[item.id][key] = false;
+    });
+  });
+  return map;
+};
+
+const store = createStore({
+  items: initialItems,
+  dirtyMap: createInitialDirtyMap(initialItems),
+});
+
+const createStore = (initialState) => {
+  let state = { ...initialState };
+  const listeners = new Set();
+
+  const getState = () => ({ ...state });
+
+  // フィールド単位で値を更新し、dirtyも自動判定
+  const setField = (id, key, value) => {
+    const items = state.items.map(item =>
+      item.id === id ? { ...item, [key]: value } : item
+    );
+    const originalValue = initialState.items.find(item => item.id === id)[key];
+    const dirtyMap = { ...state.dirtyMap };
+    dirtyMap[id] = { ...dirtyMap[id], [key]: value !== originalValue };
+
+    state = { ...state, items, dirtyMap };
+    listeners.forEach(listener => listener(getState()));
+  };
+
+  const setState = (partial) => {
+    state = { ...state, ...partial };
+    listeners.forEach(listener => {
+      listener(getState());
+    });
+  };
+
+  const subscribe = (listener) => {
+    listeners.add(listener);
+    return () => listeners.delete(listener);
+  };
+
+  return { getState, setState, setField, subscribe };
+};
+
+
+input.addEventListener("input", (e) => {
+  store.setField(item.id, key, e.target.value);
+});
+
+
+store.subscribe((state, change) => {
+  if (change) {
+    // 変更されたセルだけを再描画
+    updateTableCell(change.id, change.key, state);
+  }
+});
+
+
+function updateTableCell(id, key, state) {
+  // セルのDOM要素を取得
+  const cell = document.querySelector(
+    `tr[data-id="${id}"] td[data-key="${key}"]`
+  );
+  if (!cell) return;
+
+  // 値の更新
+  const item = state.items.find(i => i.id === id);
+  cell.querySelector('input').value = item[key];
+
+  // dirtyなら背景色変更
+  if (state.dirtyMap[id][key]) {
+    cell.style.backgroundColor = "#ffeeba";
+  } else {
+    cell.style.backgroundColor = "";
+  }
+
+  // 行のレ点も更新
+  const row = cell.closest("tr");
+  const rowDirty = Object.values(state.dirtyMap[id]).some(v => v);
+  row.querySelector('input[type="checkbox"]').checked = rowDirty;
+}
+
+
+
 </pre>
 
 
