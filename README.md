@@ -61,6 +61,42 @@ document.getElementById('create-button').addEventListener('click', function() {
 });
 
 
+// サーバーからデータ取得
+const originalRows = fetchDataFromServer(); // 初期状態を保存
+const currentRows = JSON.parse(JSON.stringify(originalRows)); // ディープコピーして編集用に
+
+
+let lastValue = null;
+
+document.getElementById('list-table').addEventListener('focusin', function(e) {
+  if (e.target.tagName === 'INPUT') {
+    lastValue = e.target.value;
+  }
+});
+
+document.getElementById('list-table').addEventListener('focusout', function(e) {
+  if (e.target.tagName === 'INPUT') {
+    if (e.target.value !== lastValue) {
+      // 値が変わっていればcurrentRowsを更新
+      const id = Number(e.target.dataset.id);
+      const field = e.target.dataset.field;
+      const row = currentRows.find(r => r.id === id);
+      if (row && field in row) {
+        row[field] = e.target.value;
+      }
+    }
+  }
+});
+
+
+// 送信時に差分検出
+const diff = currentRows.filter(row => {
+  const original = originalRows.find(o => o.id === row.id);
+  return JSON.stringify(row) !== JSON.stringify(original);
+});
+
+//基本的にはこの方針でいく。で、状態管理にはcontrolStoreを使う。データベース専用のStoreを一つ作る。シンプルで分かりやすいし、必ずそこを通し、currentDataStore.setState()すように統一する。変化した項目は、フロントでマークする。
+
 </pre>
 
 
