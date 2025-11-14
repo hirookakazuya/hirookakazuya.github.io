@@ -1,7 +1,6 @@
 
-https://demo.docusign.net/Signing/EmailStart.aspx?a=726115c2-81c8-8a8c-8101-0f1d88b10d2a&etti=24&acct=4df496f3-7842-45f3-8d53-73a24d583ee2&er=3237183e-8435-8708-8149-daf894b40d03&espei=11ee11c8-1dc0-85f8-81c2-087065b30de9
 
-### 🎯 目的
+https://demo.docusign.net/Signing/EmailStart.aspx?a=7c4212af-ec5b-8791-80a2-580504b60de8&etti=24&acct=4df496f3-7842-45f3-8d53-73a24d583ee2&er=5b9314b5-4d0e-8096-8036-319ea2b30dc2&espei=2f091858-daaf-89be-8033-2bc550b00df7
 
 **二次元配列A（注文データ）**と**配列B（納品データ）**を、各納品がどの注文に対応するかを特定し、結合（マッチング）させる。
 
