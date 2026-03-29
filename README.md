@@ -1,4 +1,4 @@
-
+![image](https://github.com/user-attachments/assets/2e4f4af1-ea82-4d37-8e25-c43920743dcf)
 
 品番の評価方法、データの把握方法、仕入計画の作成方法、新商品の企画、など。プログラムやデータベースの知識が活かせるといいが。
 
