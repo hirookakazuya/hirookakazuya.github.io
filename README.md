@@ -1,4 +1,4 @@
-[西松屋](IMG_2751.jpeg)
+[西松屋](IMG_.jpeg)
 [バースディ](IMG_2718.jpeg)
 [しまむら](IMG_2719.jpeg)
 [ユニクロ](IMG_2720.jpeg)
