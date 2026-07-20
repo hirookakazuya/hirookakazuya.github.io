@@ -10,7 +10,6 @@
 [j](IMG_2778.jpeg)
 [k](IMG_2779.jpeg)
 [l](IMG_2780.jpeg)
-
 [A](IMG_2783.jpeg)
 [B](IMG_2785.jpeg)
 [C](IMG_2786.jpeg)
