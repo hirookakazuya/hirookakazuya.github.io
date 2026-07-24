@@ -1,5 +1,5 @@
-[a](IMG_2767.jpeg)
-[b](IMG_2768.jpeg)
+[a](IMG_2765.jpeg)
+[b](IMG_2766.jpeg)
 [c](IMG_2769.jpeg)
 [d](IMG_2770.jpeg)
 [e](IMG_2773.jpeg)
